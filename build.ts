@@ -156,3 +156,16 @@ const resumeResults = await buildResumes(outdir as string);
 const resumeEnd = performance.now();
 const resumeTime = (resumeEnd - resumeStart).toFixed(2);
 console.log(`\n✅ Built ${resumeResults.length} resume page(s) in ${resumeTime}ms\n`);
+
+// Copy PDF files to dist for static serving
+console.log("📄 Copying PDF files...\n");
+let pdfCount = 0;
+const pdfGlob = new Bun.Glob("**/*.pdf");
+for await (const pdfPath of pdfGlob.scan("resumes")) {
+  const src = path.join("resumes", pdfPath);
+  const dest = path.join(outdir as string, "resumes", pdfPath);
+  await Bun.write(dest, Bun.file(src));
+  console.log(`  Copied: resumes/${pdfPath} -> ${path.relative(process.cwd(), dest)}`);
+  pdfCount++;
+}
+console.log(`\n✅ Copied ${pdfCount} PDF file(s)\n`);

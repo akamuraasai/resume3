@@ -1,0 +1,7 @@
+{
+  "buildCommand": "bun run build.ts",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/", "destination": "/tech/en" }
+  ]
+}

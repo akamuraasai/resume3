@@ -16,15 +16,15 @@ const results = await buildResumes(outdir);
 const buildTime = (performance.now() - start).toFixed(2);
 console.log(`\n✅ Built ${results.length} resume page(s) in ${buildTime}ms\n`);
 
-// Copy PDF files to dist
-console.log("📄 Copying PDF files...\n");
-let pdfCount = 0;
-const pdfGlob = new Bun.Glob("**/*.pdf");
-for await (const pdfPath of pdfGlob.scan("resumes")) {
-  const src = path.join("resumes", pdfPath);
-  const dest = path.join(outdir, "resumes", pdfPath);
+// Copy static assets (PDFs, images) to dist
+console.log("📄 Copying static assets...\n");
+let assetCount = 0;
+const assetGlob = new Bun.Glob("**/*.{pdf,jpg,jpeg,png,webp}");
+for await (const assetPath of assetGlob.scan("resumes")) {
+  const src = path.join("resumes", assetPath);
+  const dest = path.join(outdir, "resumes", assetPath);
   await Bun.write(dest, Bun.file(src));
-  console.log(`  Copied: resumes/${pdfPath} -> ${path.relative(process.cwd(), dest)}`);
-  pdfCount++;
+  console.log(`  Copied: resumes/${assetPath} -> ${path.relative(process.cwd(), dest)}`);
+  assetCount++;
 }
-console.log(`\n✅ Copied ${pdfCount} PDF file(s)\n`);
+console.log(`\n✅ Copied ${assetCount} static asset(s)\n`);

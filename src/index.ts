@@ -90,13 +90,15 @@ a{color:#566065;text-decoration:underline;text-underline-offset:4px}</style>
       });
     },
 
+    "/resumes/:file": async (req) => {
+      const bunFile = Bun.file(`resumes/${req.params.file}`);
+      if (!(await bunFile.exists())) return new Response("File not found", { status: 404 });
+      return new Response(bunFile);
+    },
+
     "/resumes/:version/:file": async (req) => {
-      const { version, file } = req.params;
-      const filePath = `resumes/${version}/${file}`;
-      const bunFile = Bun.file(filePath);
-      if (!(await bunFile.exists())) {
-        return new Response("File not found", { status: 404 });
-      }
+      const bunFile = Bun.file(`resumes/${req.params.version}/${req.params.file}`);
+      if (!(await bunFile.exists())) return new Response("File not found", { status: 404 });
       return new Response(bunFile);
     },
   },

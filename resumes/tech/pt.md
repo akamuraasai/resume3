@@ -9,6 +9,7 @@ contact:
   github: https://github.com/akamuraasai
   website: https://akamuraasai.work
   location: "São Paulo, Brasil"
+#photo: /resumes/photo.jpg
 ---
 
 # Jonathan Cruz

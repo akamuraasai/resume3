@@ -71,6 +71,16 @@ a{color:#566065;text-decoration:underline;text-underline-offset:4px}</style>
       });
     },
 
+    "/resumes/:version/:file": async (req) => {
+      const { version, file } = req.params;
+      const filePath = `resumes/${version}/${file}`;
+      const bunFile = Bun.file(filePath);
+      if (!(await bunFile.exists())) {
+        return new Response("File not found", { status: 404 });
+      }
+      return new Response(bunFile);
+    },
+
     "/api/hello": {
       async GET(req) {
         return Response.json({

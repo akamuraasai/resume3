@@ -19,9 +19,12 @@ export function ResumeNav({ data }: { data: ResumeData }) {
     })
     .join("\n");
 
+  const pdfPath = `/resumes/${data.metadata.version}/${data.metadata.locale}.pdf`;
+
   const navInnerHtml = `
     ${linksHtml}
     <button class="bg-on-primary-fixed text-on-primary px-4 md:px-6 py-1.5 md:py-2 tracking-widest text-[9px] md:text-[10px] font-bold hover:bg-primary-dim transition-colors" onclick="window.print()">PRINT</button>
+    <a href="${pdfPath}" download class="border border-on-primary-fixed text-on-primary-fixed p-1.5 md:px-6 md:py-2 hover:bg-on-primary-fixed hover:text-on-primary transition-colors flex items-center justify-center" title="Download PDF"><span class="material-symbols-outlined text-[16px] md:hidden">download</span><span class="hidden md:inline tracking-widest text-[10px] font-bold">DOWNLOAD</span></a>
   `;
 
   return (

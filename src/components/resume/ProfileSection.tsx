@@ -3,7 +3,7 @@ import type { ProfileSectionData } from "../../lib/resume-types";
 
 export function ProfileSection({ section }: { section: ProfileSectionData }) {
   return (
-    <section className="mb-8 md:mb-12 text-center max-w-3xl mx-auto">
+    <section id="profile" className="mb-8 md:mb-12 text-center max-w-3xl mx-auto">
       <h2 className="font-sans text-[10px] tracking-[0.25em] uppercase text-primary font-bold mb-6">
         {section.title}
       </h2>

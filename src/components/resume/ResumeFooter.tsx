@@ -14,6 +14,14 @@ export function ResumeFooter({ metadata }: { metadata: ResumeMetadata }) {
               LINKEDIN
             </a>
           )}
+          {metadata.contact.github && (
+            <a
+              className="text-outline-variant hover:text-primary underline decoration-1 underline-offset-4 transition-colors duration-200"
+              href={metadata.contact.github}
+            >
+              GITHUB
+            </a>
+          )}
           {metadata.contact.website && (
             <a
               className="text-outline-variant hover:text-primary underline decoration-1 underline-offset-4 transition-colors duration-200"

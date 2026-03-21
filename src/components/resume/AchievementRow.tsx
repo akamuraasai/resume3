@@ -6,7 +6,7 @@ export function AchievementRow({ achievement }: { achievement: Achievement }) {
   return (
     <div className="flex items-start gap-4">
       {achievement.stat && (
-        <div className="shrink-0 w-16 md:w-20 text-center pt-0.5">
+        <div className="shrink-0 w-24 md:w-28 text-center pt-0.5">
           <span className="stat-highlight text-xl md:text-2xl font-light text-primary headline-font leading-tight">
             {achievement.stat}
           </span>

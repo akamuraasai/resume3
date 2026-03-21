@@ -28,12 +28,12 @@ export function ResumeSectionRouter({ sections }: { sections: ResumeSection[] })
 
       {hasGrid && (
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 border-t border-outline-variant/20 pt-8 md:pt-10">
-          <div>
+          <div className="flex flex-col gap-8 md:gap-10">
             {skills && skills.type === "skills" && <SkillsSection section={skills} />}
-          </div>
-          <div>
-            {education && education.type === "education" && <EducationSection section={education} />}
             {languages && languages.type === "languages" && <LanguagesSection section={languages} />}
+          </div>
+          <div className="flex flex-col gap-8 md:gap-10">
+            {education && education.type === "education" && <EducationSection section={education} />}
           </div>
         </div>
       )}

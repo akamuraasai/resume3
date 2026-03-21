@@ -4,7 +4,7 @@ import type { EducationSectionData } from "../../lib/resume-types";
 export function EducationSection({ section }: { section: EducationSectionData }) {
   return (
     <section id="education">
-      <h2 className="font-sans text-[10px] tracking-[0.25em] uppercase text-primary font-bold mb-8 border-b border-outline-variant/20 pb-4">
+      <h2 className="font-sans text-[10px] tracking-[0.25em] uppercase text-primary font-bold mb-6 border-b border-outline-variant/20 pb-4">
         {section.title}
       </h2>
       <div className="space-y-6">

@@ -18,8 +18,8 @@ export function ResumeDocument({ data }: { data: ResumeData }) {
         <meta property="og:type" content="profile" />
         {data.metadata.photo && <meta property="og:image" content={data.metadata.photo} />}
         <meta name="robots" content="noindex" />
-        <script id="tailwind-config" dangerouslySetInnerHTML={{ __html: getTailwindConfig() }} />
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" />
+        <script id="tailwind-config" dangerouslySetInnerHTML={{ __html: getTailwindConfig() }} />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
           rel="stylesheet"

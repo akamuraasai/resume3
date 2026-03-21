@@ -18,6 +18,7 @@ export function ResumeDocument({ data }: { data: ResumeData }) {
         <meta property="og:type" content="profile" />
         {data.metadata.photo && <meta property="og:image" content={data.metadata.photo} />}
         <meta name="robots" content="noindex" />
+        <script id="tailwind-config" dangerouslySetInnerHTML={{ __html: getTailwindConfig() }} />
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
@@ -27,7 +28,6 @@ export function ResumeDocument({ data }: { data: ResumeData }) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
-        <script id="tailwind-config" dangerouslySetInnerHTML={{ __html: getTailwindConfig() }} />
         <style dangerouslySetInnerHTML={{ __html: getStyles() }} />
       </head>
       <body className="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">

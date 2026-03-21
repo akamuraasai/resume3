@@ -5,7 +5,7 @@ export function ResumeHeader({ metadata }: { metadata: ResumeMetadata }) {
   const { name, title, photo, contact } = metadata;
 
   return (
-    <header className="text-center mb-16">
+    <header className="text-center mb-8 md:mb-10">
       {photo && (
         <div className="mb-8 flex justify-center">
           <div className="w-32 h-32 border border-outline-variant p-1">
@@ -17,13 +17,13 @@ export function ResumeHeader({ metadata }: { metadata: ResumeMetadata }) {
           </div>
         </div>
       )}
-      <h1 className="headline-font text-6xl md:text-7xl font-extralight tracking-tight text-on-surface mb-4">
+      <h1 className="headline-font text-4xl md:text-7xl font-extralight tracking-tight text-on-surface mb-3">
         {name}
       </h1>
-      <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-outline mb-10">
+      <p className="font-sans text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-outline mb-6 md:mb-8">
         {title}
       </p>
-      <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] tracking-widest text-on-surface-variant font-medium uppercase">
+      <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-8 gap-y-1.5 text-[9px] md:text-[10px] tracking-widest text-on-surface-variant font-medium uppercase">
         {contact.location && (
           <span className="flex items-center gap-2">
             <span className="material-symbols-outlined text-[14px]">location_on</span> {contact.location}

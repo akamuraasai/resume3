@@ -9,7 +9,6 @@ export function ResumeNav({ data }: { data: ResumeData }) {
       return { id, label: id.toUpperCase() };
     });
 
-  // Build nav HTML with onclick for print button (renderToStaticMarkup strips React event handlers)
   const linksHtml = sectionLinks
     .map((link, i) => {
       const cls =
@@ -22,17 +21,17 @@ export function ResumeNav({ data }: { data: ResumeData }) {
 
   const navInnerHtml = `
     ${linksHtml}
-    <button class="bg-on-primary-fixed text-on-primary px-6 py-2 tracking-widest text-[10px] font-bold hover:bg-primary-dim transition-colors" onclick="window.print()">PRINT</button>
+    <button class="bg-on-primary-fixed text-on-primary px-4 md:px-6 py-1.5 md:py-2 tracking-widest text-[9px] md:text-[10px] font-bold hover:bg-primary-dim transition-colors" onclick="window.print()">PRINT</button>
   `;
 
   return (
     <nav className="bg-surface no-print">
-      <div className="flex flex-col md:flex-row justify-between items-center w-full px-20 py-12 max-w-7xl mx-auto">
-        <div className="text-4xl font-serif text-on-surface tracking-tighter uppercase">
+      <div className="flex flex-row justify-between items-center w-full px-4 md:px-20 py-4 md:py-8 max-w-7xl mx-auto">
+        <div className="hidden md:block text-3xl font-serif text-on-surface tracking-tighter uppercase">
           {data.metadata.name.toUpperCase()}
         </div>
         <div
-          className="flex gap-12 mt-8 md:mt-0 font-sans text-[10px] tracking-[0.2rem] font-medium items-center"
+          className="flex gap-4 md:gap-10 font-sans text-[9px] md:text-[10px] tracking-[0.15rem] md:tracking-[0.2rem] font-medium items-center w-full md:w-auto justify-between md:justify-end"
           dangerouslySetInnerHTML={{ __html: navInnerHtml }}
         />
       </div>

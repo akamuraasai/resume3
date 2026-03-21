@@ -32,7 +32,7 @@ export function ResumeDocument({ data }: { data: ResumeData }) {
       </head>
       <body className="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
         <ResumeNav data={data} />
-        <main className="max-w-5xl mx-auto px-8 md:px-16 py-16 bg-surface-container-lowest shadow-sm mb-20 print-container">
+        <main className="max-w-5xl mx-auto px-4 md:px-16 py-8 md:py-12 bg-surface-container-lowest shadow-sm mb-8 md:mb-16 print-container">
           <ResumeHeader metadata={data.metadata} />
           <ResumeSectionRouter sections={data.sections} />
         </main>

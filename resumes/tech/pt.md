@@ -22,14 +22,34 @@ contact:
 
 ## Perfil {#profile}
 
-"Engenheiro de software sênior com mais de 10 anos de experiência no desenvolvimento de aplicativos móveis e web. Habilidades em desenvolvimento Full Stack, incluindo expertise em React/React Native, Node.js e Java, utilizando bancos de dados como PostgreSQL e MySQL. Experiente em criação e configuração de pipelines CI/CD e implantação de infraestrutura cloud na AWS."
+"Engenheiro de software sênior com mais de 10 anos de experiência no desenvolvimento de aplicativos móveis e web. Habilidades em desenvolvimento Full Stack, incluindo expertise em React/React Native, NestJS e TypeScript, utilizando bancos de dados como PostgreSQL com Prisma ORM. Experiente em construção de sistemas fintech de compliance crítico, pipelines CI/CD e implantação de infraestrutura cloud na AWS e GCP."
 
 ## Experiência Profissional {#experience}
 *Cargos & Contribuições Selecionadas*
 
+### Engenheiro de Software Full-Stack @ Sydecar
+*Mai 2023 — Atual*
+*Cargo Atual · San Francisco, CA (Remoto)*
+
+- **KYC/EDD | Compliance** — Projetei e implementei o sistema de Enhanced Due Diligence incluindo bloqueio de funding para LPs, verificação de UBOs, integração com FinCEN, conformidade CTA e revalidação automática de KYC para investidores ativos.
+
+> !Compliance, NestJS, Prisma, PostgreSQL
+
+- **QuickBooks | Integração** — Construí engine de integração bidirecional para sincronização de invoices com mock service para dev local, validação de estado, sync automático em aprovação e suite completa de testes E2E com Playwright e Cucumber BDD.
+
+> QuickBooks API, Playwright, Cucumber
+
+- **Billing V2 | Arquitetura** — Projetei (ADR) e implementei sistema de billing V2 para fundos com scheduler trimestral de fees, versionamento de modelos de cobrança e página administrativa de estrutura de fees.
+
+> !ts-rest, Zod, NestJS
+
+- **ts-rest | Migração** — Migrei controllers legados (auth, onboarding, admin) para contratos type-safe ts-rest com schemas Zod, melhorando a segurança de tipos entre frontend e backend.
+
+> TypeScript, Zod, ts-rest
+
 ### Engenheiro de Software Sênior @ Zax
-*Jan 2019 — Atual*
-*Cargo Atual · São Paulo*
+*Jan 2019 — Mai 2023*
+*B2B Atacado · São Paulo*
 
 - **App B2B | Mobile** — Desenvolvi do zero um app mobile para negócios de atacado venderem seus produtos a parceiros comerciais usando React Native, TypeScript e GraphQL.
 
@@ -44,7 +64,7 @@ contact:
 > GitHub Actions, Fastlane, Docker
 
 ### Engenheiro de Software Sênior @ Netlolo
-*Set 2018 — Atual*
+*Set 2018 — Mai 2023*
 *Crypto & Chat · São Paulo*
 
 - **Crypto | Mobile** — Criei um app mobile e web de criptomoedas para o público geral com React Native, TypeScript e integração Web3 com smart contracts na ETH.
@@ -85,9 +105,9 @@ contact:
 
 ## Competências {#skills}
 
-- **Frontend:** React, React Native, TypeScript, Next.js, Vue
-- **Backend:** Node.js, GraphQL, Java, Express
-- **Infraestrutura:** AWS, Serverless, Docker, CI/CD
+- **Frontend:** React, React Native, TypeScript, Next.js, TanStack Query
+- **Backend:** NestJS, Node.js, Prisma, GraphQL, ts-rest, Zod
+- **Infraestrutura:** AWS, GCP, Docker, CI/CD, Nx Monorepo
 
 ## Formação {#education}
 

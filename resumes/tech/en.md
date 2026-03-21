@@ -22,14 +22,34 @@ contact:
 
 ## Profile {#profile}
 
-"Senior software engineer with over 10 years of experience in mobile and web application development. Skilled in Full Stack development with expertise in React/React Native, Node.js, and Java, using databases like PostgreSQL and MySQL. Experienced in building and configuring CI/CD pipelines and deploying cloud infrastructure on AWS."
+"Senior software engineer with over 10 years of experience in mobile and web application development. Skilled in Full Stack development with expertise in React/React Native, NestJS, and TypeScript, using databases like PostgreSQL with Prisma ORM. Experienced in building compliance-critical fintech systems, CI/CD pipelines, and deploying cloud infrastructure on AWS and GCP."
 
 ## Professional Experience {#experience}
 *Selected Roles & Contributions*
 
+### Full-Stack Software Engineer @ Sydecar
+*May 2023 — Present*
+*Current Role · San Francisco, CA (Remote)*
+
+- **KYC/EDD | Compliance** — Designed and implemented Enhanced Due Diligence system including LP funding blocks, UBO verification, FinCEN integration, CTA compliance, and automatic KYC revalidation for active investors.
+
+> !Compliance, NestJS, Prisma, PostgreSQL
+
+- **QuickBooks | Integration** — Built bidirectional integration engine for invoice synchronization with mock service for local dev, state validation, auto-sync on approval, and full E2E test suite with Playwright and Cucumber BDD.
+
+> QuickBooks API, Playwright, Cucumber
+
+- **Billing V2 | Architecture** — Designed (ADR) and implemented fund billing V2 with quarterly fee scheduler, billing model versioning, and administrative fee structure management page.
+
+> !ts-rest, Zod, NestJS
+
+- **ts-rest | Migration** — Migrated legacy controllers (auth, onboarding, admin) to type-safe ts-rest contracts with Zod schemas, improving type safety across frontend and backend.
+
+> TypeScript, Zod, ts-rest
+
 ### Sr Software Engineer @ Zax
-*Jan 2019 — Present*
-*Current Role · São Paulo*
+*Jan 2019 — May 2023*
+*B2B Wholesale · São Paulo*
 
 - **B2B App | Mobile** — Built from scratch a wholesale mobile app for business partners using React Native, TypeScript, and GraphQL.
 
@@ -44,7 +64,7 @@ contact:
 > GitHub Actions, Fastlane, Docker
 
 ### Sr Software Engineer @ Netlolo
-*Sep 2018 — Present*
+*Sep 2018 — May 2023*
 *Crypto & Chat · São Paulo*
 
 - **Crypto | Mobile** — Created a mobile and web app bringing cryptocurrency to mainstream users with React Native, TypeScript, and Web3 smart contract integration on ETH.
@@ -85,9 +105,9 @@ contact:
 
 ## Core Skills {#skills}
 
-- **Frontend:** React, React Native, TypeScript, Next.js, Vue
-- **Backend:** Node.js, GraphQL, Java, Express
-- **Infrastructure:** AWS, Serverless, Docker, CI/CD
+- **Frontend:** React, React Native, TypeScript, Next.js, TanStack Query
+- **Backend:** NestJS, Node.js, Prisma, GraphQL, ts-rest, Zod
+- **Infrastructure:** AWS, GCP, Docker, CI/CD, Nx Monorepo
 
 ## Education {#education}
 

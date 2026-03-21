@@ -4,8 +4,9 @@ import { ResumeNav } from "./ResumeNav";
 import { ResumeHeader } from "./ResumeHeader";
 import { ResumeSectionRouter } from "./ResumeSectionRouter";
 import { ResumeFooter } from "./ResumeFooter";
+import { LanguageSelector } from "./LanguageSelector";
 
-export function ResumeDocument({ data }: { data: ResumeData }) {
+export function ResumeDocument({ data, availableLocales = [] }: { data: ResumeData; availableLocales?: string[] }) {
   return (
     <html lang={data.metadata.locale}>
       <head>
@@ -37,6 +38,11 @@ export function ResumeDocument({ data }: { data: ResumeData }) {
           <ResumeSectionRouter sections={data.sections} />
         </main>
         <ResumeFooter metadata={data.metadata} />
+        <LanguageSelector
+          currentLocale={data.metadata.locale}
+          availableLocales={availableLocales}
+          version={data.metadata.version}
+        />
       </body>
     </html>
   );

@@ -5,13 +5,31 @@ import { renderResumeFromFile } from "./lib/resume-renderer";
 
 // In-memory cache for rendered resume HTML
 const resumeCache = new Map<string, string>();
+const localesByVersion = new Map<string, string[]>();
 
 async function loadAllResumes() {
   const glob = new Bun.Glob("**/*.md");
+
+  // First pass: collect locales per version
+  const mdFiles: { path: string; version: string; locale: string }[] = [];
+  localesByVersion.clear();
+
   for await (const path of glob.scan("resumes")) {
     const key = path.replace(/\.md$/, "");
+    const [version, locale] = key.split("/");
+    if (!version || !locale) continue;
+    mdFiles.push({ path, version, locale });
+    const existing = localesByVersion.get(version) || [];
+    existing.push(locale);
+    localesByVersion.set(version, existing);
+  }
+
+  // Second pass: render with available locales
+  for (const { path, version, locale } of mdFiles) {
+    const key = `${version}/${locale}`;
     try {
-      const html = await renderResumeFromFile(`resumes/${path}`);
+      const availableLocales = localesByVersion.get(version) || [];
+      const html = await renderResumeFromFile(`resumes/${path}`, availableLocales);
       resumeCache.set(key, html);
       console.log(`  Loaded resume: ${key}`);
     } catch (e) {
@@ -27,8 +45,10 @@ if (process.env.NODE_ENV !== "production") {
   watch("resumes", { recursive: true }, async (_event, filename) => {
     if (!filename?.endsWith(".md")) return;
     const key = filename.replace(/\.md$/, "");
+    const [version] = key.split("/");
     try {
-      const html = await renderResumeFromFile(`resumes/${filename}`);
+      const availableLocales = localesByVersion.get(version || "") || [];
+      const html = await renderResumeFromFile(`resumes/${filename}`, availableLocales);
       resumeCache.set(key, html);
       console.log(`Rebuilt resume: ${key}`);
     } catch (e) {

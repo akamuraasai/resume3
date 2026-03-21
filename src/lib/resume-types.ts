@@ -24,6 +24,7 @@ export type ResumeSection =
   | ExperienceSectionData
   | SkillsSectionData
   | EducationSectionData
+  | LanguagesSectionData
   | GenericSectionData;
 
 export interface ProfileSectionData {
@@ -71,6 +72,12 @@ export interface SkillsSectionData {
 export interface SkillCategory {
   name: string;
   skills: string;
+}
+
+export interface LanguagesSectionData {
+  type: "languages";
+  title: string;
+  categories: SkillCategory[];
 }
 
 export interface EducationSectionData {

@@ -18,6 +18,7 @@ import type {
   SkillCategory,
   EducationSectionData,
   EducationEntry,
+  LanguagesSectionData,
   ProfileSectionData,
   GenericSectionData,
 } from "./resume-types";
@@ -100,6 +101,8 @@ async function parseSection(raw: RawSection): Promise<ResumeSection> {
       return parseExperienceSection(raw);
     case "skills":
       return parseSkillsSection(raw);
+    case "languages":
+      return parseLanguagesSection(raw);
     case "education":
       return parseEducationSection(raw);
     default:
@@ -305,6 +308,28 @@ function parseSkillsSection(raw: RawSection): SkillsSectionData {
   }
 
   return { type: "skills", title: raw.title, categories };
+}
+
+function parseLanguagesSection(raw: RawSection): LanguagesSectionData {
+  const categories: SkillCategory[] = [];
+
+  for (const node of raw.nodes) {
+    if (node.type === "list") {
+      for (const item of (node as any).children as ListItem[]) {
+        const para = item.children[0];
+        if (!para || para.type !== "paragraph") continue;
+
+        const children = (para as Paragraph).children;
+        if (children.length > 0 && children[0].type === "strong") {
+          const name = extractText((children[0] as Strong).children).replace(/:$/, "");
+          const skills = extractText(children.slice(1) as PhrasingContent[]).replace(/^:\s*/, "").trim();
+          categories.push({ name, skills });
+        }
+      }
+    }
+  }
+
+  return { type: "languages", title: raw.title, categories };
 }
 
 function parseEducationSection(raw: RawSection): EducationSectionData {

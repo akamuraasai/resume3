@@ -169,3 +169,10 @@ for await (const pdfPath of pdfGlob.scan("resumes")) {
   pdfCount++;
 }
 console.log(`\n✅ Copied ${pdfCount} PDF file(s)\n`);
+
+// Remove SPA index.html from dist root (resumes are served at /tech/{locale})
+const spaIndex = path.join(outdir as string, "index.html");
+if (existsSync(spaIndex)) {
+  await rm(spaIndex);
+  console.log("🗑️ Removed dist/index.html (SPA template, not needed for production)\n");
+}

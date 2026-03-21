@@ -1,111 +1,45 @@
----
-description: Use Bun instead of Node.js, npm, pnpm, or vite.
-globs: "*.ts, *.tsx, *.html, *.css, *.js, *.jsx, package.json"
-alwaysApply: false
----
-
 Default to using Bun instead of Node.js.
 
 - Use `bun <file>` instead of `node <file>` or `ts-node <file>`
-- Use `bun test` instead of `jest` or `vitest`
-- Use `bun build <file.html|file.ts|file.css>` instead of `webpack` or `esbuild`
-- Use `bun install` instead of `npm install` or `yarn install` or `pnpm install`
-- Use `bun run <script>` instead of `npm run <script>` or `yarn run <script>` or `pnpm run <script>`
-- Use `bunx <package> <command>` instead of `npx <package> <command>`
-- Bun automatically loads .env, so don't use dotenv.
+- Use `bun install` instead of `npm install`
+- Use `bun run <script>` instead of `npm run <script>`
+- Use `Bun.file` over `node:fs` readFile/writeFile
+- Use `Bun.serve()` for the server. Don't use `express`.
 
-## APIs
+## Project Architecture
 
-- `Bun.serve()` supports WebSockets, HTTPS, and routes. Don't use `express`.
-- `bun:sqlite` for SQLite. Don't use `better-sqlite3`.
-- `Bun.redis` for Redis. Don't use `ioredis`.
-- `Bun.sql` for Postgres. Don't use `pg` or `postgres.js`.
-- `WebSocket` is built-in. Don't use `ws`.
-- Prefer `Bun.file` over `node:fs`'s readFile/writeFile
-- Bun.$`ls` instead of execa.
+This is an SSG (Static Site Generation) resume engine. There is no client-side JavaScript.
 
-## Testing
+- **Resumes** are markdown files in `resumes/{version}/{locale}.md`
+- **Parser** (`src/lib/resume-parser.ts`) transforms MD into typed `ResumeData` using unified/remark
+- **Renderer** (`src/lib/resume-renderer.ts`) uses React's `renderToStaticMarkup()` to generate static HTML
+- **Components** in `src/components/resume/` are server-only — they run at build time, not in the browser
+- **Styling** uses Tailwind CDN with a custom MD3 color palette defined in `ResumeDocument.tsx`
+- **SSG build** (`src/lib/ssg.ts`) generates `dist/{version}/{locale}/index.html` from all MD files
 
-Use `bun test` to run tests.
+## Markdown Conventions
 
-```ts#index.test.ts
-import { test, expect } from "bun:test";
+All parsing is **positional** — no language-dependent keywords.
 
-test("hello world", () => {
-  expect(1).toBe(1);
-});
+- `## Title {#id}` — section mapped to a React component by ID
+- `### Role @ Company` — experience entry (split on ` @ `)
+- Italic lines after `###` — 1st = period, 2nd = label
+- `**stat | label** — description` — achievement with stat highlight
+- `> tags` after a bullet — per-achievement tech badges (`,` separated, `!` prefix = highlighted)
+- Skills/Languages: `**Category:** items` bold-label list
+
+## Spacing Rule
+
+Use `flex flex-col gap-X` on parent containers for spacing between sibling sections. Do not use `mb-X` on individual components to create space between siblings.
+
+## Git
+
+- Deploy: push to `main` triggers Vercel auto-build
+
+## Commands
+
+```bash
+bun dev        # dev server with watch mode
+bun run build  # SSG build to dist/
+bun start      # production server
 ```
-
-## Frontend
-
-Use HTML imports with `Bun.serve()`. Don't use `vite`. HTML imports fully support React, CSS, Tailwind.
-
-Server:
-
-```ts#index.ts
-import index from "./index.html"
-
-Bun.serve({
-  routes: {
-    "/": index,
-    "/api/users/:id": {
-      GET: (req) => {
-        return new Response(JSON.stringify({ id: req.params.id }));
-      },
-    },
-  },
-  // optional websocket support
-  websocket: {
-    open: (ws) => {
-      ws.send("Hello, world!");
-    },
-    message: (ws, message) => {
-      ws.send(message);
-    },
-    close: (ws) => {
-      // handle close
-    }
-  },
-  development: {
-    hmr: true,
-    console: true,
-  }
-})
-```
-
-HTML files can import .tsx, .jsx or .js files directly and Bun's bundler will transpile & bundle automatically. `<link>` tags can point to stylesheets and Bun's CSS bundler will bundle.
-
-```html#index.html
-<html>
-  <body>
-    <h1>Hello, world!</h1>
-    <script type="module" src="./frontend.tsx"></script>
-  </body>
-</html>
-```
-
-With the following `frontend.tsx`:
-
-```tsx#frontend.tsx
-import React from "react";
-import { createRoot } from "react-dom/client";
-
-// import .css files directly and it works
-import './index.css';
-
-const root = createRoot(document.body);
-
-export default function Frontend() {
-  return <h1>Hello, world!</h1>;
-}
-
-root.render(<Frontend />);
-```
-
-Then, run index.ts
-
-```sh
-bun --hot ./index.ts
-```
-
-For more information, read the Bun API docs in `node_modules/bun-types/docs/**.mdx`.

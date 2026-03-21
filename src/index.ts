@@ -1,6 +1,5 @@
 import { serve } from "bun";
 import { watch } from "fs";
-import index from "./index.html";
 import { renderResumeFromFile } from "./lib/resume-renderer";
 
 // In-memory cache for rendered resume HTML
@@ -100,31 +99,6 @@ a{color:#566065;text-decoration:underline;text-underline-offset:4px}</style>
       }
       return new Response(bunFile);
     },
-
-    "/api/hello": {
-      async GET(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "GET",
-        });
-      },
-      async PUT(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "PUT",
-        });
-      },
-    },
-
-    "/api/hello/:name": async (req) => {
-      const name = req.params.name;
-      return Response.json({
-        message: `Hello, ${name}!`,
-      });
-    },
-
-    // SPA fallback for the dev app
-    "/*": index,
   },
 
   development: process.env.NODE_ENV !== "production" && {

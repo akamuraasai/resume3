@@ -3,6 +3,7 @@ import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
+import { buildResumes } from "./src/lib/ssg";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`
@@ -147,3 +148,11 @@ console.table(outputTable);
 const buildTime = (end - start).toFixed(2);
 
 console.log(`\n✅ Build completed in ${buildTime}ms\n`);
+
+// Build static resume pages from markdown
+console.log("📝 Building resume pages from markdown...\n");
+const resumeStart = performance.now();
+const resumeResults = await buildResumes(outdir as string);
+const resumeEnd = performance.now();
+const resumeTime = (resumeEnd - resumeStart).toFixed(2);
+console.log(`\n✅ Built ${resumeResults.length} resume page(s) in ${resumeTime}ms\n`);

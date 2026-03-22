@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Skip if the last commit was already a PDF regeneration (avoid loop)
+last_msg=$(git log -1 --format=%s)
+if [ "$last_msg" = "chore: regenerate resume PDFs" ]; then
+  exit 0
+fi
+
 # Check if any resume markdown files changed in commits being pushed
 remote_ref=$(git rev-parse @{u} 2>/dev/null)
 

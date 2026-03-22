@@ -8,7 +8,7 @@ test.describe("redirects", () => {
 });
 
 test.describe("resume pages", () => {
-  const locales = ["en", "pt", "es"];
+  const locales = ["en", "pt", "es", "fr", "it", "de", "ru", "ja", "zh", "ko"];
 
   for (const locale of locales) {
     test(`/tech/${locale} renders with candidate name`, async ({ page }) => {
@@ -33,16 +33,18 @@ test.describe("resume pages", () => {
 });
 
 test.describe("language selector", () => {
-  test("shows links to other locales", async ({ page }) => {
+  test("dropdown shows links to other locales when opened", async ({ page }) => {
     await page.goto("/tech/en");
+    await page.locator("details summary").click();
     const ptLink = page.locator('a[href="/tech/pt"]');
     const esLink = page.locator('a[href="/tech/es"]');
     await expect(ptLink).toBeVisible();
     await expect(esLink).toBeVisible();
   });
 
-  test("navigates to another locale", async ({ page }) => {
+  test("navigates to another locale via dropdown", async ({ page }) => {
     await page.goto("/tech/en");
+    await page.locator("details summary").click();
     await page.locator('a[href="/tech/pt"]').click();
     await expect(page).toHaveURL("/tech/pt");
     await expect(page.locator("body")).toContainText("Jonathan Cruz");

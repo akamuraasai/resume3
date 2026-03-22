@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
 
-const locales = ["en", "pt", "es"];
+const locales = ["en", "pt", "es", "fr", "it", "de", "ru", "ja", "zh", "ko"];
 
 for (const locale of locales) {
   test(`generate PDF for ${locale}`, async ({ page }) => {

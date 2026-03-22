@@ -11,7 +11,8 @@
     "lint:fix": "bunx biome check --write .",
     "format": "bunx biome format --write .",
     "test": "bun test tests/unit",
-    "test:e2e": "bunx playwright test"
+    "test:e2e": "bunx playwright test --project=e2e",
+    "pdf": "bunx playwright test --project=pdf"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -1,7 +1,7 @@
 import type { ResumeMetadata } from "../../lib/resume-types";
 
 export function ResumeHeader({ metadata }: { metadata: ResumeMetadata }) {
-  const { name, title, photo, contact } = metadata;
+  const { name, title, photo, birthDate, nationality, contact } = metadata;
 
   return (
     <header className="text-center mb-8 md:mb-10">
@@ -44,6 +44,16 @@ export function ResumeHeader({ metadata }: { metadata: ResumeMetadata }) {
           <span className="flex items-center gap-2">
             <span className="material-symbols-outlined text-[14px]">link</span>{" "}
             {contact.website.replace(/^https?:\/\//, "")}
+          </span>
+        )}
+        {birthDate && (
+          <span className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[14px]">cake</span> {birthDate}
+          </span>
+        )}
+        {nationality && (
+          <span className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[14px]">flag</span> {nationality}
           </span>
         )}
       </div>

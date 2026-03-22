@@ -4,6 +4,8 @@ export interface ResumeMetadata {
   name: string;
   title: string;
   photo?: string;
+  birthDate?: string;
+  nationality?: string;
   contact: {
     email?: string;
     phone?: string;

@@ -12,7 +12,8 @@
     "format": "bunx biome format --write .",
     "test": "bun test tests/unit",
     "test:e2e": "bunx playwright test --project=e2e",
-    "pdf": "bunx playwright test --project=pdf"
+    "pdf": "bunx playwright test --project=pdf",
+    "prepare": "husky"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -31,6 +32,7 @@
     "@types/bun": "latest",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "husky": "^9.1.7",
     "tailwindcss": "^4.1.11"
   }
 }

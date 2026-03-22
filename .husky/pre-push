@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Check if any resume markdown files changed in commits being pushed
+remote_ref=$(git rev-parse @{u} 2>/dev/null)
+
+if [ -z "$remote_ref" ]; then
+  md_changed=$(git diff --name-only --diff-filter=ACMR HEAD -- 'resumes/**/*.md')
+else
+  md_changed=$(git diff --name-only --diff-filter=ACMR "$remote_ref"..HEAD -- 'resumes/**/*.md')
+fi
+
+# No markdown changes — nothing to do
+if [ -z "$md_changed" ]; then
+  exit 0
+fi
+
+echo "📄 Resume markdown files changed, regenerating PDFs..."
+bun run pdf
+
+# Check if PDFs actually changed
+pdf_changed=$(git diff --name-only -- 'resumes/**/*.pdf')
+if [ -z "$pdf_changed" ]; then
+  echo "✓ PDFs are already up to date."
+  exit 0
+fi
+
+# PDFs are stale — commit and abort push
+echo "📝 Committing updated PDFs..."
+git add resumes/**/*.pdf
+git commit -m "chore: regenerate resume PDFs"
+
+echo ""
+echo "⚠ PDFs were regenerated and committed. Please push again."
+exit 1

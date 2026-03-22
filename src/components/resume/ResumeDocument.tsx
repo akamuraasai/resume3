@@ -137,9 +137,9 @@ function getStyles(): string {
       font-feature-settings: "tnum" on, "lnum" on;
     }
     @media print {
-      .no-print { display: none; }
-      body { background: white; }
-      .print-container { width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: none; border: none; }
+      .no-print { display: none !important; }
+      body { background: white !important; }
+      .print-container { width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: none !important; border: none; background: white !important; }
       article { break-inside: avoid; border: 1px solid #e3e9ec !important; }
     }
     ::selection {

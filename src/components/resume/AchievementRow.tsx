@@ -1,4 +1,3 @@
-import React from "react";
 import type { Achievement } from "../../lib/resume-types";
 import { TechBadge } from "./TechBadge";
 
@@ -18,9 +17,7 @@ export function AchievementRow({ achievement }: { achievement: Achievement }) {
         </div>
       )}
       <div className="flex-1 min-w-0">
-        <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed mb-1.5">
-          {achievement.text}
-        </p>
+        <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed mb-1.5">{achievement.text}</p>
         {achievement.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {achievement.tags.map((tag, i) => (

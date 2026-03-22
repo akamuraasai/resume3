@@ -1,5 +1,3 @@
-import React from "react";
-
 const LOCALE_LABELS: Record<string, string> = {
   en: "EN",
   pt: "PT",

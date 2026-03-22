@@ -1,4 +1,3 @@
-import React from "react";
 import type { Tag } from "../../lib/resume-types";
 
 export function TechBadge({ tag }: { tag: Tag }) {

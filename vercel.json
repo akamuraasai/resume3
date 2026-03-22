@@ -1,7 +1,5 @@
 {
   "buildCommand": "bun run build.ts",
   "outputDirectory": "dist",
-  "redirects": [
-    { "source": "/", "destination": "/tech/en", "permanent": false }
-  ]
+  "redirects": [{ "source": "/", "destination": "/tech/en", "permanent": false }]
 }

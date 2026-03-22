@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import { renderResumeFromFile } from "./resume-renderer";
 
 export interface BuildResult {
@@ -32,10 +32,7 @@ export async function buildResumes(outdir: string): Promise<BuildResult[]> {
   for (const { mdPath, version, locale } of mdFiles) {
     try {
       const availableLocales = localesByVersion.get(version) || [];
-      const html = await renderResumeFromFile(
-        path.join("resumes", mdPath),
-        availableLocales
-      );
+      const html = await renderResumeFromFile(path.join("resumes", mdPath), availableLocales);
       const outputPath = path.join(outdir, version, locale, "index.html");
 
       await Bun.write(outputPath, html);

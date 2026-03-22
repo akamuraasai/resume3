@@ -1,11 +1,10 @@
-import React from "react";
 import type { ResumeSection } from "../../lib/resume-types";
-import { ProfileSection } from "./ProfileSection";
-import { ExperienceSection } from "./ExperienceSection";
-import { SkillsSection } from "./SkillsSection";
 import { EducationSection } from "./EducationSection";
-import { LanguagesSection } from "./LanguagesSection";
+import { ExperienceSection } from "./ExperienceSection";
 import { GenericSection } from "./GenericSection";
+import { LanguagesSection } from "./LanguagesSection";
+import { ProfileSection } from "./ProfileSection";
+import { SkillsSection } from "./SkillsSection";
 
 const GRID_TYPES = new Set(["skills", "education", "languages"]);
 
@@ -15,7 +14,9 @@ export function ResumeSectionRouter({ sections }: { sections: ResumeSection[] })
   const lastGridIdx = sections.reduce((acc, s, i) => (GRID_TYPES.has(s.type) ? i : acc), -1);
 
   const hasGrid = firstGridIdx >= 0;
-  const beforeGrid = hasGrid ? sections.slice(0, firstGridIdx).filter((s) => !GRID_TYPES.has(s.type)) : sections.filter((s) => !GRID_TYPES.has(s.type));
+  const beforeGrid = hasGrid
+    ? sections.slice(0, firstGridIdx).filter((s) => !GRID_TYPES.has(s.type))
+    : sections.filter((s) => !GRID_TYPES.has(s.type));
   const afterGrid = hasGrid ? sections.slice(lastGridIdx + 1).filter((s) => !GRID_TYPES.has(s.type)) : [];
 
   const skills = gridSections.find((s) => s.type === "skills");

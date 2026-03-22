@@ -1,4 +1,3 @@
-import React from "react";
 import type { ExperienceEntry } from "../../lib/resume-types";
 import { AchievementRow } from "./AchievementRow";
 
@@ -14,9 +13,7 @@ export function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
                 {entry.label}
               </p>
             )}
-            <h3 className="headline-font text-xl md:text-2xl text-on-surface mb-1.5 leading-tight">
-              {entry.company}
-            </h3>
+            <h3 className="headline-font text-xl md:text-2xl text-on-surface mb-1.5 leading-tight">{entry.company}</h3>
             <p className="font-sans text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase text-primary">
               {entry.role}
             </p>

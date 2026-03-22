@@ -1,10 +1,9 @@
-import React from "react";
 import type { ResumeData } from "../../lib/resume-types";
-import { ResumeNav } from "./ResumeNav";
-import { ResumeHeader } from "./ResumeHeader";
-import { ResumeSectionRouter } from "./ResumeSectionRouter";
-import { ResumeFooter } from "./ResumeFooter";
 import { LanguageSelector } from "./LanguageSelector";
+import { ResumeFooter } from "./ResumeFooter";
+import { ResumeHeader } from "./ResumeHeader";
+import { ResumeNav } from "./ResumeNav";
+import { ResumeSectionRouter } from "./ResumeSectionRouter";
 
 export function ResumeDocument({ data, availableLocales = [] }: { data: ResumeData; availableLocales?: string[] }) {
   return (
@@ -13,7 +12,10 @@ export function ResumeDocument({ data, availableLocales = [] }: { data: ResumeDa
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <title>{`${data.metadata.name} — ${data.metadata.title}`}</title>
-        <meta name="description" content={`${data.metadata.title} — ${data.metadata.name}. ${data.metadata.contact.location || ""}`} />
+        <meta
+          name="description"
+          content={`${data.metadata.title} — ${data.metadata.name}. ${data.metadata.contact.location || ""}`}
+        />
         <meta property="og:title" content={`${data.metadata.name} — ${data.metadata.title}`} />
         <meta property="og:description" content={`${data.metadata.title} — ${data.metadata.name}`} />
         <meta property="og:type" content="profile" />

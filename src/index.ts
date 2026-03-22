@@ -1,5 +1,5 @@
+import { watch } from "node:fs";
 import { serve } from "bun";
-import { watch } from "fs";
 import { renderResumeFromFile } from "./lib/resume-renderer";
 
 // In-memory cache for rendered resume HTML
@@ -82,7 +82,7 @@ a{color:#566065;text-decoration:underline;text-underline-offset:4px}</style>
 <p>Resume <strong>${version}/${locale}</strong> not found</p>
 <p style="margin-top:2rem">Available: ${available || "none"}</p>
 </div></body></html>`,
-          { status: 404, headers: { "Content-Type": "text/html; charset=utf-8" } }
+          { status: 404, headers: { "Content-Type": "text/html; charset=utf-8" } },
         );
       }
       return new Response(html, {

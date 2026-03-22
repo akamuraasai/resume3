@@ -1,4 +1,3 @@
-import React from "react";
 import type { ResumeMetadata } from "../../lib/resume-types";
 
 export function ResumeFooter({ metadata }: { metadata: ResumeMetadata }) {

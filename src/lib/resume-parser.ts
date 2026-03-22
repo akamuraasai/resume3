@@ -1,26 +1,25 @@
 import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkRehype from "remark-rehype";
+import type { Blockquote, Emphasis, Heading, ListItem, Paragraph, PhrasingContent, Root, Strong, Text } from "mdast";
 import rehypeStringify from "rehype-stringify";
-import { visit } from "unist-util-visit";
-import type { Root, Heading, Text, Emphasis, Strong, ListItem, Blockquote, Paragraph, InlineCode, PhrasingContent } from "mdast";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 import type {
+  Achievement,
+  EducationEntry,
+  EducationSectionData,
+  ExperienceEntry,
+  ExperienceSectionData,
+  GenericSectionData,
+  LanguagesSectionData,
+  ProfileSectionData,
   ResumeData,
   ResumeMetadata,
   ResumeSection,
-  ExperienceSectionData,
-  ExperienceEntry,
-  Achievement,
-  Tag,
-  SkillsSectionData,
   SkillCategory,
-  EducationSectionData,
-  EducationEntry,
-  LanguagesSectionData,
-  ProfileSectionData,
-  GenericSectionData,
+  SkillsSectionData,
+  Tag,
 } from "./resume-types";
 
 interface RawSection {
@@ -37,9 +36,7 @@ export async function parseResume(rawContent: string): Promise<ResumeData> {
 
   const bodyNodes = skipHeaderFallback(tree.children, metadata);
   const rawSections = splitIntoSections(bodyNodes);
-  const sections = await Promise.all(
-    rawSections.map((s) => parseSection(s))
-  );
+  const sections = await Promise.all(rawSections.map((s) => parseSection(s)));
 
   return { metadata, sections };
 }
@@ -47,9 +44,7 @@ export async function parseResume(rawContent: string): Promise<ResumeData> {
 function skipHeaderFallback(nodes: Root["children"], metadata: ResumeMetadata): Root["children"] {
   if (!metadata.name) return nodes;
 
-  const firstH2Index = nodes.findIndex(
-    (n) => n.type === "heading" && (n as Heading).depth === 2
-  );
+  const firstH2Index = nodes.findIndex((n) => n.type === "heading" && (n as Heading).depth === 2);
 
   if (firstH2Index === -1) return nodes;
   return nodes.slice(firstH2Index);
@@ -182,7 +177,7 @@ function parseExperienceEntry(group: EntryGroup): ExperienceEntry | null {
   let sublabel: string | undefined;
   let description: string | undefined;
   const achievements: Achievement[] = [];
-  const tags: Tag[] = [];
+  const _tags: Tag[] = [];
 
   let italicLineCount = 0;
 
@@ -193,7 +188,7 @@ function parseExperienceEntry(group: EntryGroup): ExperienceEntry | null {
       // Consecutive italic lines (no blank line between) are merged into one paragraph
       const emphasisChildren = para.children.filter((c) => c.type === "emphasis");
       const nonEmphasisNonWhitespace = para.children.filter(
-        (c) => c.type !== "emphasis" && !(c.type === "text" && (c as Text).value.trim() === "")
+        (c) => c.type !== "emphasis" && !(c.type === "text" && (c as Text).value.trim() === ""),
       );
 
       if (emphasisChildren.length > 0 && nonEmphasisNonWhitespace.length === 0) {
@@ -223,7 +218,7 @@ function parseExperienceEntry(group: EntryGroup): ExperienceEntry | null {
         description = extractText(para.children);
       }
     } else if (node.type === "list") {
-      // Parse achievement bullets
+      // biome-ignore lint/suspicious/noExplicitAny: MDAST List node lacks typed children accessor
       for (const item of (node as any).children as ListItem[]) {
         const achievement = parseAchievement(item);
         if (achievement) achievements.push(achievement);
@@ -274,7 +269,10 @@ function parseBlockquoteTags(bq: Blockquote): Tag[] {
   for (const child of bq.children) {
     if (child.type === "paragraph") {
       const text = extractText((child as Paragraph).children);
-      const tagNames = text.split(",").map((t) => t.trim()).filter(Boolean);
+      const tagNames = text
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
       for (const tagName of tagNames) {
         if (tagName.startsWith("!")) {
           tags.push({ name: tagName.slice(1), highlighted: true });
@@ -292,6 +290,7 @@ function parseSkillsSection(raw: RawSection): SkillsSectionData {
 
   for (const node of raw.nodes) {
     if (node.type === "list") {
+      // biome-ignore lint/suspicious/noExplicitAny: MDAST List node lacks typed children accessor
       for (const item of (node as any).children as ListItem[]) {
         const para = item.children[0];
         if (!para || para.type !== "paragraph") continue;
@@ -300,7 +299,9 @@ function parseSkillsSection(raw: RawSection): SkillsSectionData {
         // Look for **Category:** Skills text
         if (children.length > 0 && children[0].type === "strong") {
           const name = extractText((children[0] as Strong).children).replace(/:$/, "");
-          const skills = extractText(children.slice(1) as PhrasingContent[]).replace(/^:\s*/, "").trim();
+          const skills = extractText(children.slice(1) as PhrasingContent[])
+            .replace(/^:\s*/, "")
+            .trim();
           categories.push({ name, skills });
         }
       }
@@ -315,6 +316,7 @@ function parseLanguagesSection(raw: RawSection): LanguagesSectionData {
 
   for (const node of raw.nodes) {
     if (node.type === "list") {
+      // biome-ignore lint/suspicious/noExplicitAny: MDAST List node lacks typed children accessor
       for (const item of (node as any).children as ListItem[]) {
         const para = item.children[0];
         if (!para || para.type !== "paragraph") continue;
@@ -322,7 +324,9 @@ function parseLanguagesSection(raw: RawSection): LanguagesSectionData {
         const children = (para as Paragraph).children;
         if (children.length > 0 && children[0].type === "strong") {
           const name = extractText((children[0] as Strong).children).replace(/:$/, "");
-          const skills = extractText(children.slice(1) as PhrasingContent[]).replace(/^:\s*/, "").trim();
+          const skills = extractText(children.slice(1) as PhrasingContent[])
+            .replace(/^:\s*/, "")
+            .trim();
           categories.push({ name, skills });
         }
       }
@@ -362,6 +366,7 @@ function parseEducationSection(raw: RawSection): EducationSectionData {
 }
 
 async function parseGenericSection(raw: RawSection): Promise<GenericSectionData> {
+  // biome-ignore lint/suspicious/noExplicitAny: MDAST RootContent[] not assignable to Root children type
   const tree: Root = { type: "root", children: raw.nodes as any };
   const html = await unified()
     .use(remarkRehype)

@@ -1,4 +1,3 @@
-import React from "react";
 import type { SkillsSectionData } from "../../lib/resume-types";
 
 export function SkillsSection({ section }: { section: SkillsSectionData }) {
@@ -10,9 +9,7 @@ export function SkillsSection({ section }: { section: SkillsSectionData }) {
       <div className="flex flex-col gap-3">
         {section.categories.map((cat, i) => (
           <div key={i} className="border-l-2 border-primary pl-3 py-1">
-            <p className="text-[10px] font-bold tracking-widest uppercase text-on-surface mb-1">
-              {cat.name}
-            </p>
+            <p className="text-[10px] font-bold tracking-widest uppercase text-on-surface mb-1">{cat.name}</p>
             <p className="text-xs text-on-surface-variant">{cat.skills}</p>
           </div>
         ))}

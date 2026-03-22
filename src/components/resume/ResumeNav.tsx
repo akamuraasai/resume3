@@ -1,4 +1,3 @@
-import React from "react";
 import type { ResumeData } from "../../lib/resume-types";
 
 export function ResumeNav({ data }: { data: ResumeData }) {

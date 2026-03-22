@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
-import { existsSync } from "fs";
-import { rm } from "fs/promises";
-import path from "path";
+import { existsSync } from "node:fs";
+import { rm } from "node:fs/promises";
+import path from "node:path";
 import { buildResumes } from "./src/lib/ssg";
 
 const outdir = path.join(process.cwd(), "dist");

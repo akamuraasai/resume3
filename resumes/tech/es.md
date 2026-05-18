@@ -118,5 +118,5 @@ contact:
 ## Idiomas {#languages}
 
 - **Portugués:** Nativo
-- **Inglés:** B1/B2
+- **Inglés:** C1/C2
 - **Español:** Básico

@@ -117,5 +117,5 @@ contact:
 ## Lingue {#languages}
 
 - **Portoghese:** Madrelingua
-- **Inglese:** B1/B2
+- **Inglese:** C1/C2
 - **Italiano:** Base

@@ -117,5 +117,5 @@ contact:
 ## Langues {#languages}
 
 - **Portugais :** Langue maternelle
-- **Anglais :** B1/B2
+- **Anglais :** C1/C2
 - **Français :** Notions

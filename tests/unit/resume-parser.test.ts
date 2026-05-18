@@ -214,7 +214,7 @@ Built things.
 ## Languages {#languages}
 
 - **Portuguese:** Native
-- **English:** B1/B2
+- **English:** C1/C2
 `;
       const result = await parseResume(md);
       const section = result.sections[0];

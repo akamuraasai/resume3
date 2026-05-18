@@ -118,4 +118,4 @@ contact:
 ## Languages {#languages}
 
 - **Portuguese:** Native
-- **English:** B1/B2
+- **English:** C1/C2

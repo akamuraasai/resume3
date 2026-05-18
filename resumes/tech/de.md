@@ -120,5 +120,5 @@ contact:
 ## Sprachen {#languages}
 
 - **Portugiesisch:** Muttersprache
-- **Englisch:** B1/B2
+- **Englisch:** C1/C2
 - **Deutsch:** Grundkenntnisse

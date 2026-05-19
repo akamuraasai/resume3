@@ -1,9 +1,11 @@
 import type { ExperienceEntry } from "../../lib/resume-types";
 import { AchievementRow } from "./AchievementRow";
 
-export function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
+export function ExperienceCard({ entry, isFirst }: { entry: ExperienceEntry; isFirst?: boolean }) {
   return (
-    <article className="experience-card border border-outline-variant/20 group hover:border-primary/40 transition-colors">
+    <article
+      className={`experience-card border border-outline-variant/20 group hover:border-primary/40 transition-colors${isFirst ? " print-break-after" : ""}`}
+    >
       <div className="grid md:grid-cols-12">
         {/* Left panel */}
         <div className="md:col-span-4 bg-surface-container-low p-4 md:p-6 flex flex-col justify-between">

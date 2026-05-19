@@ -141,6 +141,8 @@ function getStyles(): string {
       body { background: white !important; }
       .print-container { width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: none !important; border: none; background: white !important; }
       article { break-inside: avoid; border: 1px solid #e3e9ec !important; }
+      .print-break-after { break-after: page; page-break-after: always; }
+      .print-break-before { break-before: page; page-break-before: always; }
     }
     ::selection {
       background-color: #d9e4ea;

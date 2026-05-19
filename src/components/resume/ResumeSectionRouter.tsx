@@ -28,7 +28,7 @@ export function ResumeSectionRouter({ sections }: { sections: ResumeSection[] })
       {beforeGrid.map((section, i) => renderSection(section, i))}
 
       {hasGrid && (
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 border-t border-outline-variant/20 pt-8 md:pt-10">
+        <div className="print-break-before grid md:grid-cols-2 gap-8 md:gap-10 border-t border-outline-variant/20 pt-8 md:pt-10">
           <div className="flex flex-col gap-8 md:gap-10">
             {skills && skills.type === "skills" && <SkillsSection section={skills} />}
             {languages && languages.type === "languages" && <LanguagesSection section={languages} />}

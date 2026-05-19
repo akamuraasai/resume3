@@ -14,7 +14,7 @@ export function ExperienceSection({ section }: { section: ExperienceSectionData 
       </div>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
         {section.entries.map((entry, i) => (
-          <ExperienceCard key={i} entry={entry} />
+          <ExperienceCard key={i} entry={entry} isFirst={i === 0} />
         ))}
       </div>
     </section>

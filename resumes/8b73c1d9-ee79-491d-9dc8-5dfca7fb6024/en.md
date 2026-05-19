@@ -88,7 +88,7 @@ contact:
 
 > React, Redux, XMPP, Java
 
-- **Zero-downtime CI/CD** — Built CI/CD automations ensuring continuous deployment with no service interruption. PostgreSQL with Hasura as the GraphQL layer.
+- **Zero-downtime CI/CD | Continuous Deployment** — Built CI/CD automations ensuring continuous deployment with no service interruption. PostgreSQL with Hasura as the GraphQL layer.
 
 > PostgreSQL, Hasura, CI/CD
 
@@ -100,7 +100,7 @@ contact:
 
 > !Mentorship, Tech Talks, Microservices
 
-- **Multi-DB Operations** — Built the product foundation with React, Redux, and Node.js/TypeScript backend. Selected MySQL, PostgreSQL, MongoDB per service responsibility and drove DB design across teams.
+- **Multi-DB Operations | Persistence Selection** — Built the product foundation with React, Redux, and Node.js/TypeScript backend. Selected MySQL, PostgreSQL, MongoDB per service responsibility and drove DB design across teams.
 
 > React, Node.js, MongoDB, CircleCI
 

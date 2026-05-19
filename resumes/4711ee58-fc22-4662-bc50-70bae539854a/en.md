@@ -44,7 +44,7 @@ contact:
 
 > !TypeScript, React, NestJS, Prisma
 
-- **Data Ingestion & Integration Pipelines** — Architected webhook ingestion via `IncomingWebhookEvent` (unique `(event_id, vendor)`) with a PROCESSING/PROCESSED/REJECTED state machine, plus the outbox pattern in the ledger console for reliable event-driven data integration. Standardized event delivery with BullMQ Pro using exponential backoff and Redis-based ordering — the same primitives used in ETL-style workflows.
+- **Data Ingestion | ETL-style Pipelines** — Architected webhook ingestion via `IncomingWebhookEvent` (unique `(event_id, vendor)`) with a PROCESSING/PROCESSED/REJECTED state machine, plus the outbox pattern in the ledger console for reliable event-driven data integration. Standardized event delivery with BullMQ Pro using exponential backoff and Redis-based ordering — the same primitives used in ETL-style workflows.
 
 > !Data ingestion, Outbox, ETL patterns, BullMQ
 
@@ -84,7 +84,7 @@ contact:
 
 > React Native, TypeScript, Web3
 
-- **Zero-downtime CI/CD** — Built CI/CD automations ensuring continuous deployment without service interruption. PostgreSQL with Hasura as the GraphQL layer.
+- **Zero-downtime CI/CD | Continuous Deployment** — Built CI/CD automations ensuring continuous deployment without service interruption. PostgreSQL with Hasura as the GraphQL layer.
 
 > PostgreSQL, Hasura, CI/CD
 

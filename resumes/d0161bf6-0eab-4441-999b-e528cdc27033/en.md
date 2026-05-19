@@ -84,7 +84,7 @@ contact:
 
 > XMPP, Real-time, Streaming, SDK
 
-- **Zero-downtime CI/CD** — Built CI/CD automations ensuring continuous deployment without interruption. PostgreSQL with Hasura as the GraphQL layer.
+- **Zero-downtime CI/CD | Continuous Deployment** — Built CI/CD automations ensuring continuous deployment without interruption. PostgreSQL with Hasura as the GraphQL layer.
 
 > PostgreSQL, Hasura, CI/CD
 

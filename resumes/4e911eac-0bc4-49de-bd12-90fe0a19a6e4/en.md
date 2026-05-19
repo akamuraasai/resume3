@@ -36,7 +36,7 @@ contact:
 
 > !Claude Code, AI agents, MCP, Sub-agents
 
-- **React + TypeScript Production UIs** — Build admin dashboards, internal operational tools, and stakeholder-facing UIs across an Nx monorepo of dozens of React/Next.js apps. Modern React patterns (hooks, context, Redux-style state), TanStack Query, Zod runtime validation, full TypeScript discipline end-to-end.
+- **Production UIs | React + TypeScript** — Build admin dashboards, internal operational tools, and stakeholder-facing UIs across an Nx monorepo of dozens of React/Next.js apps. Modern React patterns (hooks, context, Redux-style state), TanStack Query, Zod runtime validation, full TypeScript discipline end-to-end.
 
 > !React, TypeScript, Next.js, Zod
 
@@ -92,7 +92,7 @@ contact:
 
 > React Native, TypeScript, Web3
 
-- **Zero-downtime CI/CD** — Built CI/CD automations ensuring continuous deployment without service interruption. PostgreSQL with Hasura as the GraphQL layer.
+- **Zero-downtime CI/CD | Continuous Deployment** — Built CI/CD automations ensuring continuous deployment without service interruption. PostgreSQL with Hasura as the GraphQL layer.
 
 > PostgreSQL, Hasura, CI/CD
 
@@ -116,7 +116,7 @@ contact:
 
 > !Node.js, Express, Legacy modernization
 
-- **SQL Performance Tuning** — Restructured PostgreSQL transactional tables with improved schemas and indexes, eliminating N+1 queries and reducing query times by an order of magnitude. MongoDB for unstructured logs.
+- **SQL Performance Tuning | Indexes & Schemas** — Restructured PostgreSQL transactional tables with improved schemas and indexes, eliminating N+1 queries and reducing query times by an order of magnitude. MongoDB for unstructured logs.
 
 > PostgreSQL, MongoDB, Query optimization
 

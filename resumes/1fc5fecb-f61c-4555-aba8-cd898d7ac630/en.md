@@ -40,7 +40,7 @@ contact:
 
 > !TypeScript, Nx, React, NestJS
 
-- **Serverless & AWS Lambda** — Built and operated serverless services on AWS Lambda. Earlier at Zax: deployed full AWS infrastructure (EC2, ECS, S3, Lambda, VPCs) including S3/CloudFront-style static hosting for web apps. Comfortable with the AWS Lambda + storage + queue ecosystem.
+- **Serverless | AWS Lambda Services** — Built and operated serverless services on AWS Lambda. Earlier at Zax: deployed full AWS infrastructure (EC2, ECS, S3, Lambda, VPCs) including S3/CloudFront-style static hosting for web apps. Comfortable with the AWS Lambda + storage + queue ecosystem.
 
 > AWS Lambda, S3, CloudFront, Serverless
 
@@ -68,7 +68,7 @@ contact:
 
 > !Commerce, React Native, Next.js, GraphQL
 
-- **AWS Production Operations** — Deployed and operated full cloud infrastructure on AWS (EC2, ECS, S3, Lambda, VPCs) with serverless React/Next.js apps. Containerized services with Docker (dockerized Lambdas equivalent). Owned operational health of high-traffic B2B workloads.
+- **AWS Production | High-traffic Operations** — Deployed and operated full cloud infrastructure on AWS (EC2, ECS, S3, Lambda, VPCs) with serverless React/Next.js apps. Containerized services with Docker (dockerized Lambdas equivalent). Owned operational health of high-traffic B2B workloads.
 
 > AWS, ECS, Docker, Lambda
 
@@ -88,7 +88,7 @@ contact:
 
 > React Native, TypeScript, Web3
 
-- **Zero-downtime CI/CD** — Built CI/CD automations ensuring continuous deployment with no service interruption. PostgreSQL with Hasura as the GraphQL layer.
+- **Zero-downtime CI/CD | Continuous Deployment** — Built CI/CD automations ensuring continuous deployment with no service interruption. PostgreSQL with Hasura as the GraphQL layer.
 
 > PostgreSQL, Hasura, CI/CD
 
@@ -100,7 +100,7 @@ contact:
 
 > !Mentorship, Tech Talks, Microservices
 
-- **Multi-DB Operations** — Built the product foundation with React, Redux, and a Node.js/TypeScript backend. Selected MySQL, PostgreSQL, MongoDB per service responsibility — hands-on with MySQL operations and schema design.
+- **Multi-DB Operations | Persistence Selection** — Built the product foundation with React, Redux, and a Node.js/TypeScript backend. Selected MySQL, PostgreSQL, MongoDB per service responsibility — hands-on with MySQL operations and schema design.
 
 > MySQL, PostgreSQL, MongoDB, CircleCI
 

@@ -96,7 +96,7 @@ contact:
 
 > !Mentorship, Tech Talks, Microservices
 
-- **Multi-DB Microservices** — Built the product foundation with React, Redux, Node.js/TypeScript. Selected MySQL, PostgreSQL, MongoDB per service responsibility.
+- **Multi-DB Microservices | Persistence Selection** — Built the product foundation with React, Redux, Node.js/TypeScript. Selected MySQL, PostgreSQL, MongoDB per service responsibility.
 
 > React, Node.js, MongoDB, CircleCI
 

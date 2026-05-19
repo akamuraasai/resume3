@@ -46,3 +46,6 @@ playwright/.cache/
 
 # private company → UUID mapping for targeted resumes (local only)
 .company-map.json
+
+# archived job descriptions per target UUID (local only)
+.job-descriptions/

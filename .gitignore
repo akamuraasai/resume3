@@ -49,3 +49,6 @@ playwright/.cache/
 
 # archived job descriptions per target UUID (local only)
 .job-descriptions/
+
+# cover letters per target UUID (local only)
+.cover-letters/

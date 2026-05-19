@@ -45,8 +45,8 @@ else
   bun run pdf -- --grep="generate PDF for ($pattern)"
 fi
 
-# Check if PDFs actually changed
-pdf_changed=$(git diff --name-only -- 'resumes/**/*.pdf')
+# Check if PDFs actually changed (includes both modified and untracked)
+pdf_changed=$(git ls-files --modified --others --exclude-standard -- 'resumes/**/*.pdf')
 if [ -z "$pdf_changed" ]; then
   echo "✓ PDFs are already up to date."
   exit 0

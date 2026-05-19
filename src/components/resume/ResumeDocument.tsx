@@ -143,6 +143,7 @@ function getStyles(): string {
       article { break-inside: avoid; border: 1px solid #e3e9ec !important; }
       .print-break-after { break-after: page; page-break-after: always; }
       .print-break-before { break-before: page; page-break-before: always; }
+      .print-keep-together { break-inside: avoid; page-break-inside: avoid; }
     }
     ::selection {
       background-color: #d9e4ea;

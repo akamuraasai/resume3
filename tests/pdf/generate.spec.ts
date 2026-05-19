@@ -1,19 +1,19 @@
+import { readdirSync, statSync } from "node:fs";
+import path from "node:path";
 import { test } from "@playwright/test";
 
-const baseLocales = ["en", "pt", "es", "fr", "it", "de", "ru", "ja", "zh", "ko"];
-
-const baseVersions = [
-  { name: "tech", locales: baseLocales },
-  { name: "fintech", locales: baseLocales },
-];
-
-const targetVersions = [
-  { name: "003f0f44-5a9a-4cf3-9453-3b86522afaf4", locales: ["en"] },
-  { name: "84e5558e-291f-4818-88ea-198f571bb156", locales: ["en"] },
-  { name: "a7ec5990-b231-4ce1-a055-f98702f44971", locales: ["en"] },
-  { name: "e17272fc-c993-410c-8774-de3bedddb726", locales: ["en"] },
-  { name: "2e8dc467-ff0f-496b-8c18-3289ac07cc98", locales: ["en"] },
-];
+// Discover all resume directories and their locales from the filesystem.
+// Adding a new resume = create resumes/{name}/{locale}.md — the spec picks it up
+// without any code change, which keeps the pre-push hook incremental.
+const resumesDir = path.join(import.meta.dirname, "../../resumes");
+const versions = readdirSync(resumesDir)
+  .filter((name) => statSync(path.join(resumesDir, name)).isDirectory())
+  .map((name) => {
+    const locales = readdirSync(path.join(resumesDir, name))
+      .filter((f) => f.endsWith(".md"))
+      .map((f) => f.replace(/\.md$/, ""));
+    return { name, locales };
+  });
 
 // A4 portrait at 96dpi: 794 × 1123 px. Top margin of 8mm ≈ 30 px.
 const A4_HEIGHT_PX = 1123;
@@ -24,7 +24,7 @@ const SAFETY = 0.98; // 2% headroom against sub-pixel rounding
 const MIN_SCALE = 0.55; // never go below — readability floor
 const MAX_SCALE = 0.85;
 
-for (const { name: version, locales } of [...baseVersions, ...targetVersions]) {
+for (const { name: version, locales } of versions) {
   for (const locale of locales) {
     test(`generate PDF for ${version}/${locale}`, async ({ page }) => {
       await page.setViewportSize({ width: A4_WIDTH_PX, height: A4_HEIGHT_PX });

@@ -1,10 +1,10 @@
 #!/usr/bin/env bun
 import path from "node:path";
 import { chromium } from "@playwright/test";
-import { unified } from "unified";
+import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import { unified } from "unified";
 
 const uuid = process.argv[2];
 if (!uuid) {
@@ -18,9 +18,7 @@ const pdfPath = path.join(root, ".cover-letters", `${uuid}.pdf`);
 
 const markdown = await Bun.file(mdPath).text();
 
-const htmlBody = String(
-  await unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).process(markdown),
-);
+const htmlBody = String(await unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).process(markdown));
 
 const html = `<!DOCTYPE html>
 <html lang="en">

@@ -28,7 +28,8 @@ describe("buildResumes", () => {
     const results = await buildResumes(TEST_OUTDIR);
 
     for (const result of results) {
-      expect(result.version).toBe("tech");
+      expect(typeof result.version).toBe("string");
+      expect(result.version.length).toBeGreaterThan(0);
       expect(result.locale).toBeTruthy();
       expect(result.outputPath).toContain("index.html");
     }

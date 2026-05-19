@@ -4,9 +4,7 @@ import path from "node:path";
 
 const resumesDir = path.join(import.meta.dir, "../../resumes");
 
-const versions = readdirSync(resumesDir).filter((name) =>
-  statSync(path.join(resumesDir, name)).isDirectory(),
-);
+const versions = readdirSync(resumesDir).filter((name) => statSync(path.join(resumesDir, name)).isDirectory());
 
 describe("resume markdown structure", () => {
   for (const version of versions) {
@@ -28,9 +26,7 @@ describe("resume markdown structure", () => {
           }
         });
 
-        const message = offenders
-          .map((o) => `  ${filePath}:${o.lineNumber}\n  ${o.line}`)
-          .join("\n\n");
+        const message = offenders.map((o) => `  ${filePath}:${o.lineNumber}\n  ${o.line}`).join("\n\n");
 
         expect(offenders, `Achievement bullets missing pipe separator:\n${message}`).toEqual([]);
       });

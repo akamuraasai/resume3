@@ -48,7 +48,7 @@ contact:
 
 > !PostgreSQL, Prisma, SQL
 
-- **GraphQL Heritage** — At Sydecar use REST + ts-rest contracts; earlier roles at Zax and Netlolo shipped GraphQL APIs (Hasura + Apollo) on top of PostgreSQL. Comfortable across both contract styles.
+- **GraphQL Heritage | Multi-contract Experience** — At Sydecar use REST + ts-rest contracts; earlier roles at Zax and Netlolo shipped GraphQL APIs (Hasura + Apollo) on top of PostgreSQL. Comfortable across both contract styles.
 
 > GraphQL, REST, Hasura
 

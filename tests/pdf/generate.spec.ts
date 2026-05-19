@@ -9,6 +9,7 @@ const baseVersions = [
 
 const targetVersions = [
   { name: "003f0f44-5a9a-4cf3-9453-3b86522afaf4", scale: 0.54, locales: ["en"] },
+  { name: "84e5558e-291f-4818-88ea-198f571bb156", scale: 0.54, locales: ["en"] },
 ];
 
 for (const { name: version, scale, locales } of [...baseVersions, ...targetVersions]) {

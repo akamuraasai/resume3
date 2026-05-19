@@ -10,6 +10,7 @@ const baseVersions = [
 const targetVersions = [
   { name: "003f0f44-5a9a-4cf3-9453-3b86522afaf4", locales: ["en"] },
   { name: "84e5558e-291f-4818-88ea-198f571bb156", locales: ["en"] },
+  { name: "a7ec5990-b231-4ce1-a055-f98702f44971", locales: ["en"] },
 ];
 
 // A4 portrait at 96dpi: 794 × 1123 px. Top margin of 8mm ≈ 30 px.

@@ -6,22 +6,44 @@ if [ "$last_msg" = "chore: regenerate resume PDFs" ]; then
   exit 0
 fi
 
-# Check if any resume markdown files changed in commits being pushed
+# Establish diff range against upstream
 remote_ref=$(git rev-parse @{u} 2>/dev/null)
-
 if [ -z "$remote_ref" ]; then
-  md_changed=$(git diff --name-only --diff-filter=ACMR HEAD -- 'resumes/**/*.md')
+  diff_range="HEAD"
 else
-  md_changed=$(git diff --name-only --diff-filter=ACMR "$remote_ref"..HEAD -- 'resumes/**/*.md')
+  diff_range="$remote_ref..HEAD"
 fi
 
-# No markdown changes — nothing to do
-if [ -z "$md_changed" ]; then
+# Detect "fundamental" changes that affect rendering output across the board.
+# Any change in these paths means we regenerate every PDF.
+fundamental_changed=$(git diff --name-only --diff-filter=ACMR $diff_range -- \
+  'src/components/' \
+  'src/lib/' \
+  'src/index.ts' \
+  'tests/pdf/' \
+  'playwright.config.ts' \
+  'package.json' \
+  'bun.lock' \
+  'tsconfig.json')
+
+# Detect resume markdown changes (per-PDF regen target)
+md_changed=$(git diff --name-only --diff-filter=ACMR $diff_range -- 'resumes/**/*.md')
+
+if [ -z "$fundamental_changed" ] && [ -z "$md_changed" ]; then
   exit 0
 fi
 
-echo "📄 Resume markdown files changed, regenerating PDFs..."
-bun run pdf
+if [ -n "$fundamental_changed" ]; then
+  echo "📄 Fundamental change detected — regenerating ALL PDFs..."
+  bun run pdf
+else
+  # Build a Playwright --grep pattern from the changed markdown files.
+  # resumes/tech/en.md -> tech/en
+  # Multiple paths joined with | for regex alternation.
+  pattern=$(echo "$md_changed" | sed -e 's|^resumes/||' -e 's|\.md$||' | paste -sd '|' -)
+  echo "📄 Resume markdown changed — regenerating PDFs for: $pattern"
+  bun run pdf -- --grep="generate PDF for ($pattern)"
+fi
 
 # Check if PDFs actually changed
 pdf_changed=$(git diff --name-only -- 'resumes/**/*.pdf')

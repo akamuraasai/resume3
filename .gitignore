@@ -43,3 +43,6 @@ test-results/
 playwright-report/
 playwright/.cache/
 .test-dist/
+
+# private company → UUID mapping for targeted resumes (local only)
+.company-map.json

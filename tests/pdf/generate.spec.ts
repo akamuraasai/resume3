@@ -1,9 +1,12 @@
 import { test } from "@playwright/test";
 
-const versions = ["tech", "fintech"];
+const versions = [
+  { name: "tech", scale: 0.6 },
+  { name: "fintech", scale: 0.54 },
+];
 const locales = ["en", "pt", "es", "fr", "it", "de", "ru", "ja", "zh", "ko"];
 
-for (const version of versions) {
+for (const { name: version, scale } of versions) {
   for (const locale of locales) {
     test(`generate PDF for ${version}/${locale}`, async ({ page }) => {
       await page.goto(`/${version}/${locale}`, { waitUntil: "networkidle" });
@@ -11,7 +14,7 @@ for (const version of versions) {
         path: `resumes/${version}/${locale}.pdf`,
         format: "A4",
         landscape: false,
-        scale: 0.6,
+        scale,
         margin: { top: "8mm", right: "0mm", bottom: "0mm", left: "0mm" },
         printBackground: true,
         displayHeaderFooter: false,
